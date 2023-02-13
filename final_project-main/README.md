@@ -5,7 +5,7 @@ This web application was created using Django 4.1.5 as final project for Beetroo
 
 ## Authors
 
- - [Eduard Stan](https://github.com/EdyStan) {edigeorges50g@gmail.com}
+ - [Eduard Stan](https://github.com/EdyStan) {edigeorges50@gmail.com}
  - [Oana Sîrbu](https://github.com/Oana4) {sirbu.oana4@gmail.com}
  - [Anastasiya Sviderska](https://github.com/anastasiyasviderska) {aj@gumgumlab.com}
 
