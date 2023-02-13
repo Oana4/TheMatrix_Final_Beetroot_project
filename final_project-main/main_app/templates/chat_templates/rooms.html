@@ -1,0 +1,105 @@
+{% extends 'main_app/base.html' %}
+{% load bootstrap5 %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_styling.css' %}">
+    <style>
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card items-center">
+                <h1 style="color: white; align-self: center"> Rooms </h1>
+                {% for room in rooms1 %}
+                    {% if room.user1 is not None %}
+                    <div class="lg:w-1/4 px-3 py-3">
+                        <div class="p-4 bg-white shadow rounded-xl text-center">
+                            {% if room.user2 == None %}
+                                {% if room.user1 == request.user %}
+                                    <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Help Desk</h2>
+                                {% else %}
+                                    {% if room.is_current %}
+                                        {% if room.user1.is_driver %}
+                                            <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Driver {{ room.user1.username }}</h2>
+                                        {% else %}
+                                            <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Passenger {{ room.user1.username }}</h2>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if room.user1.is_driver %}
+                                            <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Driver {{ room.user1.username }}</h2>
+                                        {% else %}
+                                            <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Passenger {{ room.user1.username }}</h2>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% if room.is_current %}
+                                    {% if request.user == room.user1 %}
+                                        <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Driver {{ room.user2.username }}</h2>
+                                    {% else %}
+                                        <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Passenger {{ room.user1.username }}</h2>
+                                    {% endif %}
+                                {% else %}
+                                    {% if request.user == room.user1 %}
+                                        <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Driver {{ room.user2.username }}</h2>
+                                    {% else %}
+                                        <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Passenger {{ room.user1.username }}</h2>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            <a href="{% url 'room' room.id %}" class="px-5 py-3 block rounded-xl text-black bg-teal-600 hover:bg-teal-700"
+                               style="font-size: 25px">Join</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                {% for room in rooms2 %}
+                    {% if room.user1 is not None %}
+                    <div class="lg:w-1/4 px-3 py-3">
+                        <div class="p-4 bg-white shadow rounded-xl text-center">
+                            {% if room.user2 == None %}
+                                {% if room.user1 == request.user %}
+                                    <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Help Desk</h2>
+                                {% else %}
+                                    <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">{{ room.user1.username }}</h2>
+                                {% endif %}
+                            {% else %}
+                                {% if room.is_current %}
+                                    {% if request.user == room.user1 %}
+                                        <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Driver {{ room.user2.username }}</h2>
+                                    {% else %}
+                                        <h2 class="mb-5 text-2xl font-bold" style="font-size: 35px">Current Passenger {{ room.user1.username }}</h2>
+                                    {% endif %}
+                                {% else %}
+                                    {% if request.user == room.user1 %}
+                                        <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Driver {{ room.user2.username }}</h2>
+                                    {% else %}
+                                        <h2 class="mb-5 text-2xl font-semibold" style="font-size: 35px">Passenger {{ room.user1.username }}</h2>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            <a href="{% url 'room' room.id %}" class="px-5 py-3 block rounded-xl text-black bg-teal-600 hover:bg-teal-700"
+                               style="font-size: 25px">Join</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

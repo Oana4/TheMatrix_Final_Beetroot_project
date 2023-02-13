@@ -1,0 +1,180 @@
+{% extends 'main_app/base.html' %}
+{% load bootstrap5 %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
+    <style>
+        svg {
+            color: slateblue;
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if available_orders_list or assigned_orders or executed_orders %}
+        {% if assigned_orders %}
+        <section class="container">
+            <h1 class="text-center m-4 fw-light">Assigned Orders</h1>
+            <div class="table-responsive">
+                <table class="table table-hover table-stripped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 6.66%">Id</th>
+                            <th scope="col" style="width: 33%">From</th>
+                            <th scope="col" style="width: 33%">To</th>
+                            <th scope="col" style="width: 11%">Price</th>
+                            <th scope="col" style="width: 8%">Rated</th>
+                            <th scope="col" style="width: 8.33%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in assigned_orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.start_location_lat }}, {{ order.start_location_lon }}</td>
+                            <td>{{ order.destination_lat }}, {{ order.destination_lon }}</td>
+                            <td>{{ order.price }}</td>
+                            {% if order.status == 4 %}
+                            <td>New</td>
+                            {% elif order.status == 0 %}
+                            <td>Available</td>
+                            {% elif order.status == 1 %}
+                            <td>Assigned</td>
+                            {% elif order.status == 2 %}
+                            <td>In progress</td>
+                            {% elif order.status == 3 %}
+                            <td>Done</td>
+                            {% endif %}
+                            <td>{{ order.price }}</td>
+                            <td><a href="/passenger_order/{{ order.id }}/">Open</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+        {% if available_orders_list %}
+        <section class="container">
+            <h1 class="text-center m-4 fw-light">Available Orders</h1>
+            <div class="table-responsive">
+                <table class="table table-hover table-stripped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 6.66%">Id</th>
+                            <th scope="col" style="width: 33%">From</th>
+                            <th scope="col" style="width: 33%">To</th>
+                            <th scope="col" style="width: 11%">Price</th>
+                            <th scope="col" style="width: 8%">Rated</th>
+                            <th scope="col" style="width: 8.33%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in available_orders_list %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.start_location_lat }}, {{ order.start_location_lon }}</td>
+                            <td>{{ order.destination_lat }}, {{ order.destination_lon }}</td>
+                            <td>{{ order.price }}</td>
+                            <td>New</td>
+                            <td><a href="/passenger_order/{{ order.id }}/">Open</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+        {% if executed_orders %}
+        <section class="container">
+            <h1 class="text-center m-4 fw-light">Executed Orders</h1>
+            <div class="table-responsive">
+                <table class="table table-hover table-stripped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 6.66%">Id</th>
+                            <th scope="col" style="width: 33%">From</th>
+                            <th scope="col" style="width: 33%">To</th>
+                            <th scope="col" style="width: 11%">Price</th>
+                            <th scope="col" style="width: 8%">Rated</th>
+                            <th scope="col" style="width: 8.33%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in executed_orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.start_location_lat }}, {{ order.start_location_lon }}</td>
+                            <td>{{ order.destination_lat }}, {{ order.destination_lon }}</td>
+                            <td>{{ order.price }}</td>
+                            {% if order.is_rated %}
+                            <td>★</td>
+                            {% else %}
+                            <td>☆</td>
+                            {% endif %}
+                            <td><a href="/passenger_order/{{ order.id }}/">Open</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+    {% else %}
+        <section class="container">
+            <h1 class="text-center m-4 fw-light">No orders to show.</h1>
+        </section>
+    {% endif %}
+
+{% endblock %}

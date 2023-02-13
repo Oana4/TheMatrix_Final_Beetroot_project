@@ -1,0 +1,134 @@
+{% extends 'main_app/base.html' %}
+{% load bootstrap5 %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_styling.css' %}">
+    <style>
+        svg {
+            color: slateblue;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-striped > tbody > tr:nth-child(odd) > td,
+        .table-striped > tbody > tr:nth-child(odd) > th {
+            background-color: rgba(106, 90, 205, 0.5);
+            color: white;
+        }
+
+        th {
+            color: white;
+        }
+
+        .table-striped > tbody > tr:nth-child(even) > td,
+        .table-striped > tbody > tr:nth-child(even) > th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .title {
+            padding-top: 50px;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if unassigned_orders or executed_orders %}
+        {% if unassigned_orders %}
+            <section class="container">
+                <div class="title"><h1 class="text-center m-4 fw-light" style="color: white">Available Orders</h1></div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped tabel-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 6.66%">Id</th>
+                            <th scope="col" style="width: 37%">From</th>
+                            <th scope="col" style="width: 37%">To</th>
+                            <th scope="col" style="width: 11%">Price</th>
+                            <th scope="col" style="width: 8.33%">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in unassigned_orders %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.start_name }}</td>
+                                <td>{{ order.destination_name }}</td>
+                                <td>{{ order.price }} $</td>
+                                <td><a href="/driver_order/{{ order.id }}/" style="color: white">Assign</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        {% endif %}
+        {% if executed_orders %}
+            <section class="container">
+                <div class="title"><h1 class="text-center m-4 fw-light" style="color: white">Executed Orders</h1></div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 6.66%">Id</th>
+                            <th scope="col" style="width: 37%">From</th>
+                            <th scope="col" style="width: 37%">To</th>
+                            <th scope="col" style="width: 11%">Price</th>
+                            <th scope="col" style="width: 8.33%">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in executed_orders %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.start_name }}</td>
+                                <td>{{ order.destination_name }}</td>
+                                <td>{{ order.price }} $</td>
+                                <td><a href="/driver_order/{{ order.id }}/" style="color: white">See details</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        {% endif %}
+    {% else %}
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <h1 class="text-center m-4 fw-light" style="color: white">No orders to show.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <script>
+        $(function () {
+            $("tbody").each(function (elem, index) {
+                let arr = $.makeArray($("tr", this).detach());
+                arr.reverse();
+                $(this).append(arr);
+            });
+        });
+    </script>
+{% endblock %}

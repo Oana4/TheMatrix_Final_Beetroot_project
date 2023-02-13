@@ -1,0 +1,168 @@
+[
+    {
+        "model": "the_matrix.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$CeORZv9mq82hMsfdrNOPw3$HRjlyCYdW/EwxFv6C5YMKu3y/Xb0TuuZOT0R1RA39Uo=",
+            "last_login": "2023-01-22T23:56:45.193Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "Ana",
+            "last_name": "S",
+            "email": "admin@matrix.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-01-22T23:55:42.635Z",
+            "is_driver": false,
+            "is_passenger": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "the_matrix.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$CeORZv9mq82hMsfdrNOPw3$HRjlyCYdW/EwxFv6C5YMKu3y/Xb0TuuZOT0R1RA39Uo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Rol_13",
+            "first_name": "Rol",
+            "last_name": "Ton",
+            "email": "rolton@matrix.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-01-23T00:02:25Z",
+            "is_driver": false,
+            "is_passenger": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "the_matrix.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$CeORZv9mq82hMsfdrNOPw3$HRjlyCYdW/EwxFv6C5YMKu3y/Xb0TuuZOT0R1RA39Uo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Miv89",
+            "first_name": "Miv",
+            "last_name": "Ina",
+            "email": "mivina@matrix.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-01-23T00:05:45Z",
+            "is_driver": true,
+            "is_passenger": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "the_matrix.passengeruser",
+        "pk": 2,
+        "fields": {
+            "amount_of_money": 300.0
+        }
+    },
+    {
+        "model": "the_matrix.driveruser",
+        "pk": 3,
+        "fields": {
+            "amount_of_money": 49.0,
+            "rating": 5.0,
+            "number_of_ratings": 14
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 1,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 11.0,
+            "is_rated": false,
+            "status": 1
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 2,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 12.0,
+            "is_rated": false,
+            "status": 2
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 3,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 13.0,
+            "is_rated": false,
+            "status": 2
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 4,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 14.0,
+            "is_rated": false,
+            "status": 3
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 5,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 15.0,
+            "is_rated": false,
+            "status": 3
+        }
+    },
+    {
+        "model": "the_matrix.order",
+        "pk": 6,
+        "fields": {
+            "start_location_lat": "17.060440",
+            "start_location_lon": "48.1998684",
+            "destination_lat": "17.089412",
+            "destination_lon": "48.1413221",
+            "passenger": 2,
+            "driver": 3,
+            "price": 12.0,
+            "is_rated": false,
+            "status": 3
+        }
+    }
+]

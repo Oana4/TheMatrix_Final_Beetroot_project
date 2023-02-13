@@ -1,0 +1,153 @@
+{% extends 'main_app/base.html' %}
+{% load bootstrap5 %}
+
+{% block head %}
+    <style>
+        .carousel-item {
+
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .carousel-image {
+            {#height: 100%;#}
+            {#background-repeat: no-repeat;#}
+            {#background-size: cover;#}
+            {#background-position: center;#}
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    {% load static %}
+                    <img src="{% static "/media/carousel_3.jpg" %}" class="carousel-image bd-placeholder-img-lg"
+                         alt="carousel_1" aria-hidden="true"/>
+                </div>
+                <div class="carousel-item">
+                    {% load static %}
+                    <img src="{% static "/media/carousel_2.jpg" %}" class="carousel-image bd-placeholder-img-lg"
+                         alt="carousel_2" aria-hidden="true"/>
+                </div>
+                <div class="carousel-item">
+                    {% load static %}
+                    <img src="{% static "/media/carousel_1.jpg" %}" class="carousel-image bd-placeholder-img-lg"
+                         alt="carousel_3" aria-hidden="true"/>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    {% load static %}
+                    <img src="{% static "media/anastasiya.jpg" %}" width="140" height="150" alt="ana"
+                         class="rounded-circle"/>
+                    <h2 class="fw-normal">Anastasiya (customer) </h2>
+                    <p>I enjoyed my rides with TheMatrix! Their app deserves a 5/5 too, really easy to navigate and
+                        place orders!</p>
+
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    {% load static %}
+                    <img src="{% static "media/oana.jpg" %}" width="140" height="150" alt="oana"
+                         class="rounded-circle"/>
+                    <h2 class="fw-normal">Oana (customer)</h2>
+                    <p>I am very happy with the service they have provided and I recommended them to all my friends and
+                        acquaintances.
+                        Definitely the best taxi company out there! </p>
+
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    {% load static %}
+                    <img src="{% static "media/edy2.jpg" %}" width="140" height="150" alt="edy2"
+                         class="rounded-circle"/>
+                    <h2 class="fw-normal">Edy (employee)</h2>
+                    <p>I am part of a wonderful team, with coordination and cooperation skills rarely encountered!
+                        Totally recommend joining our team!</p>
+
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-5 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Driver of The Month: <span class="text-muted">Meet Eduard Stan</span>
+                    </h2>
+                    <p class="lead"> Eduard Stan (known as Edy) received the 'Employee of the Month' reward, based on
+                        his rating on our app and also
+                        based on his outstanding work within our company. Do you want Edy to be your next driver? Book a
+                        trip!
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    {% load static %}
+                    <img src="{% static "media/Edy.jpg" %}" width="400px" height="500px" alt="Edy"
+                         style="border: 15px solid #555;"/>
+                    {#        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>#}
+
+                </div>
+            </div>
+            <!-- /END THE FEATURETTES -->
+            <hr class="featurette-divider">
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <p class="float-end"><a href="#">Back to top</a></p>
+            <p>&copy; 2023 TheMatrix Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    </main>
+
+{% endblock %}

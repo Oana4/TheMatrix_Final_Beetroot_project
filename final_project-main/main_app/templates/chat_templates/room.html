@@ -1,0 +1,313 @@
+{% extends 'main_app/base.html' %}
+{% load bootstrap5 %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/features.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_styling.css' %}">
+    <style>
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch div {
+            pointer-events: none;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            background: transparent;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-leading {
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-right: none;
+            border-radius: .65rem 0 0 .65rem;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-middle {
+            flex: 0 0 auto;
+            max-width: calc(100% - 1rem);
+            height: 100%;
+            border-right: none;
+            border-left: none;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-trailing {
+            flex-grow: 1;
+            height: 100%;
+            border-left: none;
+            border-radius: 0 .65rem .65rem 0;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-leading {
+            border-top: 0.125rem solid
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch div {
+            pointer-events: none;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            background: transparent;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-leading {
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-right: none;
+            border-radius: .65rem 0 0 .65rem;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-middle {
+            flex: 0 0 auto;
+            max-width: calc(100% - 1rem);
+            height: 100%;
+            border-right: none;
+            border-left: none;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-notch .form-notch-trailing {
+            flex-grow: 1;
+            height: 100%;
+            border-left: none;
+            border-radius: 0 .65rem .65rem 0;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-leading {
+            border-top: 0.125rem solid slateblue;
+            border-bottom: 0.125rem solid slateblue;
+            border-left: 0.125rem solid slateblue;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-leading,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-leading {
+            border-right: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-middle {
+            border-bottom: 0.125rem solid;
+            border-color: slateblue;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-middle,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-middle {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-trailing {
+            border-top: 0.125rem solid slateblue;
+            border-bottom: 0.125rem solid slateblue;
+            border-right: 0.125rem solid slateblue;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-trailing,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-trailing {
+            border-left: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-label {
+            color: slateblue;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-label {
+            color: #bfbfbf;
+        }
+
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-leading,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-leading {
+            border-right: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-middle {
+            border-bottom: 0.125rem solid;
+            border-color: slateblue;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-middle,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-middle {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-trailing {
+            border-top: 0.125rem solid slateblue;
+            border-bottom: 0.125rem solid slateblue;
+            border-right: 0.125rem solid slateblue;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-notch .form-notch-trailing,
+        #chat1 .form-outline .form-control.active ~ .form-notch .form-notch-trailing {
+            border-left: none;
+            transition: all 0.2s linear;
+        }
+
+        #chat1 .form-outline .form-control:focus ~ .form-label {
+            color: slateblue;
+        }
+
+        #chat1 .form-outline .form-control ~ .form-label {
+            color: #bfbfbf;
+        }
+
+        #top_header_chat {
+            background-color: slateblue;
+        }
+
+        #chat_btn {
+            background-color: slateblue;
+        }
+
+        #chat-messages {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container py-5 h-100">
+
+        <div class="d-flex justify-content-center h-100 align-items-center">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="card" id="chat1" style="border-radius: 15px;">
+                    <div
+                            class="card-header d-flex justify-content-between align-items-center p-3 text-white border-bottom-0"
+                            style="border-top-left-radius: 15px; border-top-right-radius: 15px;"
+                            id='top_header_chat'>
+                        <i class="fas fa-angle-left"></i>
+                        {% if request.user == room.user1 %}
+                            {% if room.user2 != None %}
+                                <p class="mb-0 fw-bold">Live chat with {{ room.user2.username }}</p>
+                            {% else %}
+                                <p class="mb-0 fw-bold">Live chat with admin</p>
+                            {% endif %}
+                        {% else %}
+                            {% if room.user1 != None %}
+                                <p class="mb-0 fw-bold">Live chat with {{ room.user1.username }}</p>
+                            {% endif %}
+                        {% endif %}
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="card-body" id="chat-messages">
+                        {% for message in messages %}
+                            <b>{{ message.user.username }}</b>: {{ message.content }}<br>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-outline">
+                        <form method="post" action="." class="flex">
+                            {% csrf_token %}
+                            <div class="container">
+                                <div class="row justify-content-md-center align-items-center">
+                                    <div class="col-md-10" style="padding-bottom: 10px">
+                                        <input type="text" name="content"
+                                               class="form-control"
+                                               placeholder="Your message.."
+                                               id="chat-message-input">
+                                    </div>
+                                    <div class="col-md-2" style="padding-bottom: 10px; padding-left: 5px">
+                                        <button class="btn py-2" id="chat_btn" style="color: white;">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ room.id|json_script:"json-roomname" }}
+    {{ request.user.username|json_script:"json-username" }}
+
+    <script>
+        const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+        const userName = JSON.parse(document.getElementById('json-username').textContent);
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function (e) {
+            console.log('onmessage')
+
+            const data = JSON.parse(e.data);
+            if (data.message) {
+                document.querySelector('#chat-messages').innerHTML += ('<b>' + data.username + '</b>: ' + data.message + '<br>');
+                scrollToBottom();
+            }
+            else {
+                return;
+            }
+        };
+
+        chatSocket.onclose = function (e) {
+            console.log('onclose')
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function (e) {
+            if (e.keyCode === 13) {
+                document.querySelector('#chat_btn').click();
+            }
+        };
+
+
+        document.querySelector('#chat_btn').onclick = function (e) {
+
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+
+            if (message !== '') {
+
+                console.log({
+                    'message': message,
+                    'username': userName,
+                    'room': roomName
+                })
+
+                chatSocket.send(JSON.stringify({
+                    'message': message,
+                    'username': userName,
+                    'room': roomName
+                }));
+            }
+        };
+
+        function scrollToBottom() {
+            let objDiv = document.querySelector("#chat-messages");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+
+        // to trigger the scroll on load
+        scrollToBottom();
+
+    </script>
+{% endblock %}
