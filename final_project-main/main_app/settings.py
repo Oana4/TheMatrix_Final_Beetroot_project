@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!=t(fz@z8@c7ysvsm@e&&eefnpa01z3$fd4qpne@d-!3j^&r_q'
+SECRET_KEY = ''
 
 GOOGLE_API_KEY = ""
 BASE_COUNTRY = 'SK'
