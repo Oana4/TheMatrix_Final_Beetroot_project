@@ -22,6 +22,8 @@ To actually run the project, just write in the terminal the following command
 ```bash
   python3 manage.py runserver
 ```
+You may also need to create a new secret key for this Django project. Here you can find some nice instructions:
+https://www.educative.io/answers/how-to-generate-a-django-secretkey
     
 ## Description
 
