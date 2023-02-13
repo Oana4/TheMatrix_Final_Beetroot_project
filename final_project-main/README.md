@@ -1,11 +1,11 @@
 # TheMatrix
 
-This web application was created as final project for Beetroot Academy's "Python Development" Course. It represents a taxi app which allows users to place orders, track their status, chat with both current order's driver and administrators of the company and also rate the drivers that they've interacted with. The data for our orders is retrieved from Google Maps using Google APIs.
+This web application was created using Django 4.1.5 as final project for Beetroot Academy's "Python Development" Course. It represents a taxi app which allows users to place orders, track their status, chat with both current order's driver and administrators of the company and also rate the drivers that they've interacted with. The data for our orders is retrieved from Google Maps using Google APIs.
 
 
 ## Authors
 
- - [Eduard Stan](https://github.com/EdyStan)
+ - [Eduard Stan](https://github.com/EdyStan) 
  - [Oana Sîrbu](https://github.com/Oana4)
  - [Anastasiya Sviderska](https://github.com/anastasiyasviderska)
 
@@ -16,6 +16,11 @@ To continue with the development of this code, one should be up-to-date to all l
 
 ```bash
   pip install -r requirements.txt
+```
+To actually run the project, just write in the terminal the following command 
+
+```bash
+  python3 manage.py runserver
 ```
     
 ## Description
